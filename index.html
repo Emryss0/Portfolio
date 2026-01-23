@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Emrys | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --bg: #0b0e14;
+      --card: #161b22;
+      --text: #e6e6e6;
+      --muted: #9da5b4;
+      --accent: #58a6ff;
+      --accent2: #7ee787;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: radial-gradient(circle at top, #111827, var(--bg));
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    header h1 span {
+      color: var(--accent);
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      border-left: 4px solid var(--accent);
+      padding-left: 15px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 20px;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(0,0,0,.4);
+    }
+
+    .skills span {
+      display: inline-block;
+      background: rgba(88,166,255,.15);
+      color: var(--accent);
+      padding: 8px 14px;
+      border-radius: 999px;
+      margin: 6px;
+      font-size: 0.9rem;
+    }
+
+    a {
+      color: var(--accent2);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+      border-top: 1px solid #222;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Emrys <span>// Portfolio</span></h1>
+    <p>
+      Administrateur Systèmes & Réseaux · SecOps · Linux / Debian ·
+      Passionné par l’infrastructure, la sécurité et l’automatisation.
+    </p>
+  </header>
+
+  <section>
+    <h2>À propos</h2>
+    <div class="card">
+      <p>
+        Étudiant en administration systèmes et réseaux avec une spécialisation
+        sécurité (SecOps).  
+        J’aime comprendre comment les systèmes fonctionnent, les sécuriser
+        et les optimiser.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Compétences</h2>
+    <div class="card skills">
+      <span>Linux / Debian</span>
+      <span>Apache / Nginx</span>
+      <span>HAProxy</span>
+      <span>TCP/IP</span>
+      <span>VLAN / Subnetting</span>
+      <span>Git / GitHub</span>
+      <span>Bash</span>
+      <span>Sécurité réseau</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Projets</h2>
+
+    <div class="card">
+      <h3>📘 Cours HAProxy sur Debian</h3>
+      <p>
+        Documentation technique expliquant l’installation et la configuration
+        de HAProxy sur Debian.
+      </p>
+      <a href="https://github.com/Emryss0/Cours" target="_blank">Voir le repo</a>
+    </div>
+
+    <div class="card">
+      <h3>🖥️ Page d’accueil Apache personnalisée</h3>
+      <p>
+        Création d’une page d’accueil Apache stylisée (HTML/CSS/JS),
+        pensée comme une landing page technique.
+      </p>
+    </div>
+
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <div class="card">
+      <p>
+        📧 Email : <b>à ajouter</b><br>
+        💼 GitHub : <a href="https://github.com/Emryss0" target="_blank">github.com/Emryss0</a><br>
+        🔗 LinkedIn : <b>à ajouter</b>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 — Emrys · Portfolio hébergé sur GitHub Pages
+  </footer>
+
+</body>
+</html>
