@@ -971,24 +971,50 @@
       }
 
       /* ---------- Cursor glow (subtle) ---------- */
-      .glow {
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        z-index: -1;
-        background: radial-gradient(
-            220px 220px at var(--x, 50%) var(--y, 50%),
-            rgba(124, 92, 255, 0.2),
-            transparent 55%
-          ),
-          radial-gradient(
-            260px 260px at calc(var(--x, 50%) + 12%) calc(var(--y, 50%) + 10%),
-            rgba(53, 209, 255, 0.12),
-            transparent 60%
-          );
-        opacity: 0.9;
-        transform: translateZ(0);
-      }
+   /* ---------- Cursor glow (animated + not permanent) ---------- */
+.glow{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+
+  /* intensité faible par défaut */
+  opacity: 0;
+  transition: opacity .35s ease, filter .35s ease;
+
+  background:
+    radial-gradient(
+      220px 220px at var(--x, 50%) var(--y, 50%),
+      rgba(124, 92, 255, 0.22),
+      transparent 60%
+    ),
+    radial-gradient(
+      260px 260px at calc(var(--x, 50%) + 12%) calc(var(--y, 50%) + 10%),
+      rgba(53, 209, 255, 0.14),
+      transparent 65%
+    );
+
+  filter: blur(0px);
+  transform: translateZ(0);
+}
+
+/* Quand on est en "mode actif" (souris en mouvement / hover) */
+.glow.on{
+  opacity: .85;
+  filter: blur(0.2px);
+  animation: glowPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes glowPulse{
+  0%,100% { transform: translateZ(0) scale(1); }
+  50%     { transform: translateZ(0) scale(1.02); }
+}
+
+/* Sur mobile: pas de glow (sinon effet hover relou) */
+@media (hover: none){
+  .glow{ display:none; }
+}
+
 
       /* ---------- Print friendly ---------- */
       @media print {
