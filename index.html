@@ -784,68 +784,75 @@
           <div class="contactCard reveal">
             <h3>Message rapide</h3>
 
-            <form class="form" id="contactForm">
-              <div class="field">
-                <label for="fName">Nom</label>
-                <input id="fName" name="name" type="text" placeholder="Ton nom / entreprise" autocomplete="name" />
-              </div>
+           <form class="form" id="contactForm"
+      action="https://formspree.io/f/mojewwgn"
+      method="POST">
+  <div class="field">
+    <label for="fName">Nom</label>
+    <input
+      id="fName"
+      name="name"
+      type="text"
+      placeholder="Ton nom / entreprise"
+      autocomplete="name"
+    />
+  </div>
 
-              <div class="field">
-                <label for="fEmail">Email</label>
-                <input
-                  id="fEmail"
-                  name="email"
-                  type="email"
-                  placeholder="email@entreprise.com"
-                  autocomplete="email"
-                  required
-                />
-              </div>
+  <div class="field">
+    <label for="fEmail">Email</label>
+    <input
+      id="fEmail"
+      name="email"
+      type="email"
+      placeholder="email@entreprise.com"
+      autocomplete="email"
+      required
+    />
+  </div>
 
-              <div class="field">
-                <label for="fSubject">Objet</label>
-                <input
-                  id="fSubject"
-                  name="subject"
-                  type="text"
-                  placeholder="Alternance SysAdmin / SecOps — prise de contact"
-                  required
-                />
-              </div>
+  <div class="field">
+    <label for="fSubject">Objet</label>
+    <input
+      id="fSubject"
+      name="subject"
+      type="text"
+      placeholder="Alternance SysAdmin / SecOps — prise de contact"
+      required
+    />
+  </div>
 
-              <div class="field">
-                <label for="fMsg">Message</label>
-                <textarea
-                  id="fMsg"
-                  name="message"
-                  placeholder="Bonjour Emrys, nous souhaitons échanger à propos de..."
-                  required
-                ></textarea>
-              </div>
+  <div class="field">
+    <label for="fMsg">Message</label>
+    <textarea
+      id="fMsg"
+      name="message"
+      placeholder="Bonjour Emrys, nous souhaitons échanger à propos de..."
+      required
+    ></textarea>
+  </div>
 
-              <button class="btn primary" type="submit">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path
-                    d="M4.5 11.5 20 4.8 13.3 20.3l-1.7-6-7.1-2.8Z"
-                    stroke="currentColor"
-                    stroke-width="1.6"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M20 4.8 11.6 14.3"
-                    stroke="currentColor"
-                    stroke-width="1.6"
-                    stroke-linecap="round"
-                  />
-                </svg>
-                Générer l’email
-              </button>
+  <!-- Anti-spam Formspree (honeypot invisible) -->
+  <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
-              <!-- <p class="note">
-                Le formulaire n’envoie rien côté serveur : il ouvre simplement ton client mail (mailto).
-                Si tu veux une vraie réception web (backend), je peux te proposer une version “no-code” (Formspree) ou API.
-              </p> -->
-            </form>
+  <button class="btn primary" type="submit">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M4.5 11.5 20 4.8 13.3 20.3l-1.7-6-7.1-2.8Z"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M20 4.8 11.6 14.3"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+      />
+    </svg>
+    Envoyer le message
+  </button>
+</form>
+
           </div>
         </div>
       </section>
