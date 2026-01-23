@@ -1,174 +1,2029 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Emrys | Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#0b1020" />
+    <meta
+      name="description"
+      content="Portfolio d’Emrys AGBOTON — Administrateur Systèmes & Réseaux (SecOps), alternance 1 semaine école / 3 semaines entreprise."
+    />
+    <title>Emrys AGBOTON — Portfolio | Admin Systèmes & Réseaux</title>
 
-  <style>
-    :root {
-      --bg: #0b0e14;
-      --card: #161b22;
-      --text: #e6e6e6;
-      --muted: #9da5b4;
-      --accent: #58a6ff;
-      --accent2: #7ee787;
-    }
+    <style>
+      /* ===============================
+         Emrys Portfolio — One file
+         - No framework - Premium animations
+         - Inline SVG icons - Accessible + responsive
+         =============================== */
 
-    * { box-sizing: border-box; }
+      :root {
+        --bg0: #070a12;
+        --bg1: #0b1020;
+        --card: rgba(255, 255, 255, 0.06);
+        --card2: rgba(255, 255, 255, 0.08);
+        --stroke: rgba(255, 255, 255, 0.12);
+        --txt: rgba(255, 255, 255, 0.92);
+        --muted: rgba(255, 255, 255, 0.72);
+        --muted2: rgba(255, 255, 255, 0.55);
+        --accent: #7c5cff; /* violet */
+        --accent2: #35d1ff; /* cyan */
+        --ok: #44d19e;
+        --warn: #ffcc66;
+        --shadow: 0 18px 70px rgba(0, 0, 0, 0.45);
+        --shadow2: 0 10px 40px rgba(0, 0, 0, 0.35);
+        --radius: 22px;
+        --radius2: 16px;
+        --pad: clamp(16px, 2.2vw, 26px);
+        --max: 1180px;
+        --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+        --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+          Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      }
 
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      background: radial-gradient(circle at top, #111827, var(--bg));
-      color: var(--text);
-      line-height: 1.6;
-    }
+      * {
+        box-sizing: border-box;
+      }
 
-    header {
-      padding: 80px 20px;
-      text-align: center;
-    }
+      html,
+      body {
+        height: 100%;
+      }
 
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
+      body {
+        margin: 0;
+        font-family: var(--sans);
+        color: var(--txt);
+        background: radial-gradient(
+            1200px 700px at 20% -10%,
+            rgba(124, 92, 255, 0.25),
+            transparent 60%
+          ),
+          radial-gradient(
+            900px 600px at 95% 0%,
+            rgba(53, 209, 255, 0.18),
+            transparent 55%
+          ),
+          radial-gradient(
+            900px 700px at 40% 110%,
+            rgba(68, 209, 158, 0.12),
+            transparent 60%
+          ),
+          linear-gradient(180deg, var(--bg0), var(--bg1));
+        overflow-x: hidden;
+      }
 
-    header h1 span {
-      color: var(--accent);
-    }
+      a {
+        color: inherit;
+      }
 
-    header p {
-      color: var(--muted);
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: auto;
-    }
+      .container {
+        width: min(var(--max), calc(100% - 2 * var(--pad)));
+        margin: 0 auto;
+      }
 
-    section {
-      max-width: 1000px;
-      margin: auto;
-      padding: 60px 20px;
-    }
+      /* ---------- Subtle animated grid ---------- */
+      .bg-grid {
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        pointer-events: none;
+        opacity: 0.35;
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+        background-size: 48px 48px;
 
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 30px;
-      border-left: 4px solid var(--accent);
-      padding-left: 15px;
-    }
+        /* Safari friendly */
+        -webkit-mask-image: radial-gradient(900px 650px at 35% 10%, black 55%, transparent 100%);
+        mask-image: radial-gradient(900px 650px at 35% 10%, black 55%, transparent 100%);
 
-    .card {
-      background: var(--card);
-      border-radius: 12px;
-      padding: 25px;
-      margin-bottom: 20px;
-      transition: transform .2s ease, box-shadow .2s ease;
-    }
+        transform: translateZ(0);
+        animation: gridFloat 10s ease-in-out infinite alternate;
+      }
 
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 15px 40px rgba(0,0,0,.4);
-    }
+      @keyframes gridFloat {
+        from {
+          transform: translate3d(0, 0, 0) scale(1);
+        }
+        to {
+          transform: translate3d(0, -8px, 0) scale(1.01);
+        }
+      }
 
-    .skills span {
-      display: inline-block;
-      background: rgba(88,166,255,.15);
-      color: var(--accent);
-      padding: 8px 14px;
-      border-radius: 999px;
-      margin: 6px;
-      font-size: 0.9rem;
-    }
+      /* ---------- Top nav ---------- */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(14px);
+        background: linear-gradient(180deg, rgba(7, 10, 18, 0.75), rgba(7, 10, 18, 0.25));
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
 
-    a {
-      color: var(--accent2);
-      text-decoration: none;
-      font-weight: 500;
-    }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 0;
+        gap: 14px;
+      }
 
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      color: var(--muted);
-      border-top: 1px solid #222;
-    }
-  </style>
-</head>
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
 
-<body>
+      .logo {
+        width: 38px;
+        height: 38px;
+        border-radius: 14px;
+        background: radial-gradient(
+          80% 80% at 30% 20%,
+          rgba(124, 92, 255, 0.9),
+          rgba(53, 209, 255, 0.35) 55%,
+          rgba(255, 255, 255, 0.05) 100%
+        );
+        box-shadow: 0 14px 45px rgba(124, 92, 255, 0.18);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        position: relative;
+      }
 
-  <header>
-    <h1>Emrys <span>// Portfolio</span></h1>
-    <p>
-      Administrateur Systèmes & Réseaux · SecOps · Linux / Debian ·
-      Passionné par l’infrastructure, la sécurité et l’automatisation.
-    </p>
-  </header>
+      .logo::after {
+        content: "";
+        position: absolute;
+        inset: -40%;
+        background: conic-gradient(
+          from 180deg,
+          transparent,
+          rgba(53, 209, 255, 0.45),
+          transparent,
+          rgba(124, 92, 255, 0.35),
+          transparent
+        );
+        animation: spin 8s linear infinite;
+        opacity: 0.65;
+      }
 
-  <section>
-    <h2>À propos</h2>
-    <div class="card">
-      <p>
-        Étudiant en administration systèmes et réseaux avec une spécialisation
-        sécurité (SecOps).  
-        J’aime comprendre comment les systèmes fonctionnent, les sécuriser
-        et les optimiser.
-      </p>
-    </div>
-  </section>
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
 
-  <section>
-    <h2>Compétences</h2>
-    <div class="card skills">
-      <span>Linux / Debian</span>
-      <span>Apache / Nginx</span>
-      <span>HAProxy</span>
-      <span>TCP/IP</span>
-      <span>VLAN / Subnetting</span>
-      <span>Git / GitHub</span>
-      <span>Bash</span>
-      <span>Sécurité réseau</span>
-    </div>
-  </section>
+      .logo svg {
+        position: relative;
+        z-index: 1;
+        opacity: 0.92;
+      }
 
-  <section>
-    <h2>Projets</h2>
+      .brand b {
+        font-size: 14px;
+        letter-spacing: 0.2px;
+      }
 
-    <div class="card">
-      <h3>📘 Cours HAProxy sur Debian</h3>
-      <p>
-        Documentation technique expliquant l’installation et la configuration
-        de HAProxy sur Debian.
-      </p>
-      <a href="https://github.com/Emryss0/Cours" target="_blank">Voir le repo</a>
-    </div>
+      .brand small {
+        display: block;
+        color: var(--muted2);
+        font-size: 12px;
+        margin-top: 2px;
+      }
 
-    <div class="card">
-      <h3>🖥️ Page d’accueil Apache personnalisée</h3>
-      <p>
-        Création d’une page d’accueil Apache stylisée (HTML/CSS/JS),
-        pensée comme une landing page technique.
-      </p>
-    </div>
+      .navlinks {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
 
-  </section>
+      .navlinks a {
+        text-decoration: none;
+        font-size: 12px;
+        color: var(--muted);
+        padding: 9px 10px;
+        border-radius: 12px;
+        border: 1px solid transparent;
+        transition: 0.2s ease;
+      }
 
-  <section>
-    <h2>Contact</h2>
-    <div class="card">
-      <p>
-        📧 Email : <b>à ajouter</b><br>
-        💼 GitHub : <a href="https://github.com/Emryss0" target="_blank">github.com/Emryss0</a><br>
-        🔗 LinkedIn : <b>à ajouter</b>
-      </p>
-    </div>
-  </section>
+      .navlinks a:hover {
+        color: var(--txt);
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.1);
+        transform: translateY(-1px);
+      }
 
-  <footer>
-    © 2026 — Emrys · Portfolio hébergé sur GitHub Pages
-  </footer>
+      .cta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
 
-</body>
+      .btn {
+        appearance: none;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        padding: 10px 12px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: var(--txt);
+        font-size: 12px;
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        transition: 0.2s ease;
+        box-shadow: var(--shadow2);
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .btn.primary {
+        background: linear-gradient(135deg, rgba(124, 92, 255, 0.95), rgba(53, 209, 255, 0.55));
+        border-color: rgba(255, 255, 255, 0.18);
+        box-shadow: 0 18px 60px rgba(124, 92, 255, 0.22);
+      }
+
+      .btn.primary:hover {
+        filter: saturate(1.05);
+        transform: translateY(-1px) scale(1.01);
+      }
+
+      .btn svg {
+        width: 16px;
+        height: 16px;
+        opacity: 0.9;
+      }
+
+      /* ---------- Hero ---------- */
+      .hero {
+        padding: 38px 0 22px;
+      }
+
+      .heroGrid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 18px;
+        align-items: stretch;
+      }
+
+      @media (max-width: 980px) {
+        .heroGrid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .card {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.04));
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: -120px -120px auto auto;
+        width: 280px;
+        height: 280px;
+        background: radial-gradient(circle at 30% 30%, rgba(124, 92, 255, 0.35), transparent 60%),
+          radial-gradient(circle at 60% 70%, rgba(53, 209, 255, 0.18), transparent 55%);
+        transform: rotate(12deg);
+        filter: blur(2px);
+        opacity: 0.9;
+        pointer-events: none;
+      }
+
+      .cardInner {
+        padding: 22px;
+        position: relative;
+      }
+
+      .kicker {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(0, 0, 0, 0.12);
+        color: var(--muted);
+        font-size: 12px;
+        backdrop-filter: blur(10px);
+      }
+
+      .pill .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 99px;
+        background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.95), rgba(124, 92, 255, 0.8));
+        box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.12);
+      }
+
+      h1 {
+        font-size: clamp(30px, 3.2vw, 46px);
+        line-height: 1.05;
+        margin: 14px 0 12px;
+        letter-spacing: -0.02em;
+      }
+
+      .subtitle {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 0 0 16px;
+        max-width: 62ch;
+      }
+
+      .splitActions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        margin-top: 14px;
+      }
+
+      /* ---------- Profile / availability ---------- */
+      .profileCard {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        min-height: 100%;
+      }
+
+      .profileTop {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 18px 18px 10px;
+      }
+
+      .avatar {
+        width: 58px;
+        height: 58px;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        overflow: hidden;
+        box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+        position: relative;
+        display: grid;
+        place-items: center;
+      }
+
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: none;
+      }
+
+      .avatar .fallback {
+        width: 34px;
+        height: 34px;
+        opacity: 0.9;
+      }
+
+      .who b {
+        display: block;
+        font-size: 14px;
+      }
+
+      .who small {
+        display: block;
+        color: var(--muted2);
+        margin-top: 3px;
+      }
+
+      .miniGrid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        padding: 0 18px 16px;
+      }
+
+      .mini {
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.05);
+        padding: 12px;
+        min-height: 86px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .mini::after {
+        content: "";
+        position: absolute;
+        inset: auto -50px -60px auto;
+        width: 140px;
+        height: 140px;
+        border-radius: 999px;
+        background: radial-gradient(circle at 30% 30%, rgba(124, 92, 255, 0.22), transparent 60%);
+        transform: rotate(10deg);
+        opacity: 0.9;
+      }
+
+      .mini .label {
+        color: var(--muted2);
+        font-size: 11px;
+      }
+
+      .mini .value {
+        margin-top: 6px;
+        font-weight: 700;
+        font-size: 12px;
+      }
+
+      .mini .hint {
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.35;
+      }
+
+      .profileBottom {
+        padding: 12px 18px 18px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+      }
+
+      /* ---------- Sections ---------- */
+      section {
+        padding: 26px 0;
+      }
+
+      .sectionTitle {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-bottom: 14px;
+      }
+
+      .sectionTitle h2 {
+        margin: 0;
+        font-size: 16px;
+        letter-spacing: 0.2px;
+      }
+
+      .sectionTitle p {
+        margin: 0;
+        color: var(--muted2);
+        font-size: 12px;
+        line-height: 1.5;
+        max-width: 70ch;
+      }
+
+      .grid2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      @media (max-width: 980px) {
+        .grid2 {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ---------- Experience cards ---------- */
+      .expCard {
+        border-radius: var(--radius);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+        box-shadow: var(--shadow2);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .expHeader {
+        padding: 16px 16px 12px;
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+
+      .companyMark {
+        width: 44px;
+        height: 44px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(0, 0, 0, 0.15);
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        flex: 0 0 auto;
+        position: relative;
+      }
+
+      .companyMark img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 7px;
+        display: none;
+      }
+
+      .companyMark svg {
+        width: 22px;
+        height: 22px;
+        opacity: 0.95;
+      }
+
+      .expHeader b {
+        display: block;
+        font-size: 13px;
+      }
+
+      .meta {
+        color: var(--muted2);
+        font-size: 11px;
+        margin-top: 4px;
+        line-height: 1.35;
+      }
+
+      .expBody {
+        padding: 0 16px 14px;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 8px 0 10px;
+      }
+
+      .tag {
+        font-size: 11px;
+        color: var(--muted);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.05);
+        padding: 6px 8px;
+        border-radius: 999px;
+      }
+
+      ul.clean {
+        margin: 8px 0 0;
+        padding-left: 16px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.55;
+      }
+
+      ul.clean li {
+        margin: 6px 0;
+      }
+
+      .expFooter {
+        padding: 12px 16px 14px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.08);
+      }
+
+      .chip {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        font-size: 11px;
+        color: var(--muted);
+        padding: 7px 9px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .chip svg {
+        width: 14px;
+        height: 14px;
+        opacity: 0.9;
+      }
+
+      /* ---------- Skills ---------- */
+      .skillWrap {
+        border-radius: var(--radius);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+        box-shadow: var(--shadow2);
+        padding: 16px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .skillCols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      @media (max-width: 980px) {
+        .skillCols {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .skillGroup h3 {
+        margin: 0 0 10px;
+        font-size: 12px;
+        color: var(--txt);
+        letter-spacing: 0.2px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .skillGroup h3 svg {
+        width: 16px;
+        height: 16px;
+        opacity: 0.9;
+      }
+
+      .skill {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px 10px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.04);
+        margin: 8px 0;
+        transition: 0.2s ease;
+      }
+
+      .skill:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .skill .name {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .bar {
+        width: 42%;
+        height: 8px;
+        border-radius: 99px;
+        background: rgba(255, 255, 255, 0.09);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .bar > i {
+        display: block;
+        height: 100%;
+        width: var(--w, 70%);
+        background: linear-gradient(90deg, rgba(124, 92, 255, 0.95), rgba(53, 209, 255, 0.75));
+        border-radius: 99px;
+        transform: translateX(-8%);
+        filter: saturate(1.1);
+      }
+
+      /* ---------- Projects ---------- */
+      .projectGrid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 14px;
+        align-items: stretch;
+      }
+
+      @media (max-width: 980px) {
+        .projectGrid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .projectCard {
+        border-radius: var(--radius);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+        box-shadow: var(--shadow2);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .projectCard .top {
+        padding: 16px;
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+
+      .projectIcon {
+        width: 42px;
+        height: 42px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(0, 0, 0, 0.12);
+        display: grid;
+        place-items: center;
+      }
+
+      .projectIcon svg {
+        width: 20px;
+        height: 20px;
+        opacity: 0.92;
+      }
+
+      .projectCard h3 {
+        margin: 0;
+        font-size: 13px;
+      }
+
+      .projectCard p {
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.55;
+      }
+
+      .projectCard .body {
+        padding: 0 16px 16px;
+      }
+
+      .projectCard .bullets {
+        margin: 10px 0 0;
+        padding-left: 16px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.55;
+      }
+
+      .projectCard .bullets li {
+        margin: 6px 0;
+      }
+
+      .projectCard .bottom {
+        padding: 12px 16px 14px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .projectCard .bottom .miniTags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      /* ---------- Timeline ---------- */
+      .timeline {
+        border-radius: var(--radius);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+        box-shadow: var(--shadow2);
+        padding: 16px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .timeRow {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 12px;
+        padding: 12px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.04);
+        margin: 10px 0;
+        position: relative;
+        transition: 0.2s ease;
+      }
+
+      .timeRow:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .timeRow .when {
+        color: var(--muted2);
+        font-size: 11px;
+        font-family: var(--mono);
+      }
+
+      .timeRow .what b {
+        display: block;
+        font-size: 12px;
+      }
+
+      .timeRow .what small {
+        display: block;
+        color: var(--muted);
+        margin-top: 4px;
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      @media (max-width: 640px) {
+        .timeRow {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ---------- Contact ---------- */
+      .contactGrid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      @media (max-width: 980px) {
+        .contactGrid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .contactCard {
+        border-radius: var(--radius);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+        box-shadow: var(--shadow2);
+        padding: 16px;
+      }
+
+      .contactCard h3 {
+        margin: 0 0 10px;
+        font-size: 13px;
+      }
+
+      .contactLine {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        padding: 10px 10px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.04);
+        margin: 10px 0;
+      }
+
+      .contactLine svg {
+        width: 18px;
+        height: 18px;
+        opacity: 0.92;
+        flex: 0 0 auto;
+        margin-top: 2px;
+      }
+
+      .contactLine .txt {
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .contactLine .txt b {
+        color: var(--txt);
+      }
+
+      .form {
+        display: grid;
+        gap: 10px;
+      }
+
+      .field {
+        display: grid;
+        gap: 6px;
+      }
+
+      label {
+        font-size: 11px;
+        color: var(--muted2);
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(0, 0, 0, 0.18);
+        color: var(--txt);
+        padding: 10px 11px;
+        outline: none;
+        font-size: 12px;
+        font-family: var(--sans);
+      }
+
+      textarea {
+        min-height: 110px;
+        resize: vertical;
+      }
+
+      input:focus,
+      textarea:focus {
+        border-color: rgba(124, 92, 255, 0.55);
+        box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.12);
+      }
+
+      .note {
+        color: var(--muted2);
+        font-size: 11px;
+        line-height: 1.5;
+        margin-top: 8px;
+      }
+
+      /* ---------- Footer ---------- */
+      footer {
+        padding: 18px 0 32px;
+        color: var(--muted2);
+        font-size: 11px;
+      }
+
+      .foot {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 14px;
+      }
+
+      /* ---------- Reveal animation helpers ---------- */
+      .reveal {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        will-change: transform, opacity;
+      }
+
+      .reveal.on {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ---------- Cursor glow (subtle) ---------- */
+      .glow {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: -1;
+        background: radial-gradient(
+            220px 220px at var(--x, 50%) var(--y, 50%),
+            rgba(124, 92, 255, 0.2),
+            transparent 55%
+          ),
+          radial-gradient(
+            260px 260px at calc(var(--x, 50%) + 12%) calc(var(--y, 50%) + 10%),
+            rgba(53, 209, 255, 0.12),
+            transparent 60%
+          );
+        opacity: 0.9;
+        transform: translateZ(0);
+      }
+
+      /* ---------- Print friendly ---------- */
+      @media print {
+        header,
+        .bg-grid,
+        .glow,
+        .btn,
+        .navlinks,
+        .form,
+        .note {
+          display: none !important;
+        }
+
+        body {
+          background: white;
+          color: #111;
+        }
+
+        .card,
+        .expCard,
+        .skillWrap,
+        .projectCard,
+        .timeline,
+        .contactCard {
+          box-shadow: none;
+          border-color: #ddd;
+          background: white;
+        }
+
+        a {
+          color: #111;
+          text-decoration: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="bg-grid"></div>
+    <div class="glow" aria-hidden="true"></div>
+
+    <header>
+      <div class="container nav">
+        <a class="brand" href="#top">
+          <span class="logo" aria-hidden="true">
+            <!-- Inline brand SVG -->
+            <svg viewBox="0 0 24 24" fill="none">
+              <path
+                d="M12 2.6c4.7 0 8.5 3.8 8.5 8.5S16.7 19.6 12 19.6 3.5 15.8 3.5 11.1 7.3 2.6 12 2.6Z"
+                stroke="rgba(255,255,255,.9)"
+                stroke-width="1.4"
+              />
+              <path
+                d="M7.2 11.1h9.6M12 6.3v9.6"
+                stroke="rgba(255,255,255,.9)"
+                stroke-width="1.4"
+                stroke-linecap="round"
+              />
+            </svg>
+          </span>
+
+          <span>
+            <b>Emrys AGBOTON</b>
+            <small>Administrateur Systèmes & Réseaux • SecOps</small>
+          </span>
+        </a>
+
+        <nav class="navlinks" aria-label="Navigation">
+          <a href="#experience">Expériences</a>
+          <a href="#skills">Compétences</a>
+          <a href="#projects">Projets</a>
+          <a href="#timeline">Parcours</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="cta">
+          <a class="btn" href="mailto:emrysagboton@gmail.com" title="Envoyer un email">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4.5 7.5h15v9h-15v-9Z" stroke="currentColor" stroke-width="1.5" />
+              <path
+                d="m5 8 7 6 7-6"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+            Email
+          </a>
+
+          <!-- Remplace assets/cv.pdf par ton CV si tu veux une version téléchargeable -->
+          <a class="btn primary" href="assets/cv.pdf" download title="Télécharger le CV (place-holder)">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 3v10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+              <path
+                d="m8 10 4 4 4-4"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path d="M5 19h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+            Télécharger CV
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="top" class="container">
+      <!-- ================= HERO ================= -->
+      <div class="hero">
+        <div class="heroGrid">
+          <div class="card reveal">
+            <div class="cardInner">
+              <div class="kicker">
+                <span class="pill">
+                  <span class="dot"></span>
+                  Disponible en alternance • 1 semaine école / 3 semaines entreprise
+                </span>
+                <span class="pill">France • Neuilly-Plaisance (93360)</span>
+                <span class="pill">🇬🇧 Anglais (professionnel)</span>
+              </div>
+
+              <h1>
+                Administrateur Systèmes & Réseaux
+                <span style="color: rgba(255, 255, 255, 0.55); font-weight: 600">orienté</span>
+                <span
+                  style="
+                    background: linear-gradient(90deg, var(--accent), var(--accent2));
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    color: transparent;
+                    font-weight: 800;
+                  "
+                >
+                  Sécurité & Production
+                </span>
+              </h1>
+
+              <p class="subtitle">
+                Je conçois, sécurise et opère des environnements Windows / Linux : AD DS, DNS,
+                DHCP, VPN, firewall (Fortinet), VoIP, et bonnes pratiques SecOps. Expérience de
+                terrain en support N1 et projets IPSSI (infrastructure & fullstack).
+              </p>
+
+              <div class="splitActions">
+                <a class="btn primary" href="#contact">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M7 12h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                    <path
+                      d="m13 8 4 4-4 4"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  Me contacter
+                </a>
+
+                <a class="btn" href="#projects">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M4.5 6.5h15v11h-15v-11Z" stroke="currentColor" stroke-width="1.5" />
+                    <path
+                      d="M8 9h8M8 12h8M8 15h5"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                  Voir les projets
+                </a>
+
+                <a
+                  class="btn"
+                  href="https://www.linkedin.com/in/julius-agboton-503612300"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M6.5 9.5v10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                    <path d="M6.5 6.5h0" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" />
+                    <path
+                      d="M10.5 19.5v-6.3c0-2.1 1.2-3.2 2.8-3.2s2.7 1.1 2.7 3.2v6.3"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M16 12.3c0-1.3.9-2.3 2.2-2.3 1.2 0 2.1 1 2.1 2.3v7.2"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card profileCard reveal">
+            <div class="profileTop">
+              <div class="avatar" id="avatar">
+                <!-- If assets/me.jpg exists, JS will show it -->
+                <img id="avatarImg" src="assets/me.jpg" alt="Photo d’Emrys AGBOTON" />
+                <svg class="fallback" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M12 12.2c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4Z"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  />
+                  <path
+                    d="M4.6 20.2c1.6-3.2 4.1-5 7.4-5s5.8 1.8 7.4 5"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+
+              <div class="who">
+                <b>Emrys AGBOTON</b>
+                <small>20 ans • Admin Systèmes & Réseaux</small>
+              </div>
+            </div>
+
+            <div class="miniGrid">
+              <div class="mini">
+                <div class="label">Spécialités</div>
+                <div class="value">Windows Server • Réseaux • SecOps</div>
+                <div class="hint">AD DS, DNS/DHCP, firewall, VPN, segmentation, durcissement.</div>
+              </div>
+
+              <div class="mini">
+                <div class="label">Environnements</div>
+                <div class="value">Windows / Ubuntu / Debian</div>
+                <div class="hint">Admin, scripts (PowerShell), outils sécurité (Kali), Git.</div>
+              </div>
+
+              <div class="mini">
+                <div class="label">Alternance</div>
+                <div class="value">1 sem. école / 3 sem. entreprise</div>
+                <div class="hint">Disponible pour une mission longue en SysAdmin / NetSec / SecOps.</div>
+              </div>
+
+              <div class="mini">
+                <div class="label">Localisation</div>
+                <div class="value">France (IDF) • Mobilité</div>
+                <div class="hint">Expérience de stage à Montréal (Canada).</div>
+              </div>
+            </div>
+
+            <div class="profileBottom">
+              <a class="btn" href="#skills">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M6 14.5 10 18.5 18 6.5"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                Compétences clés
+              </a>
+
+              <a class="btn" href="#experience">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M7 7h10v14H7V7Z" stroke="currentColor" stroke-width="1.5" />
+                  <path
+                    d="M9 7V5.8c0-.9.7-1.6 1.6-1.6h2.8c.9 0 1.6.7 1.6 1.6V7"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  />
+                </svg>
+                Expériences
+              </a>
+
+              <a class="btn" href="#projects">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M8 5h12v6H8V5Z" stroke="currentColor" stroke-width="1.5" />
+                  <path d="M4 13h16v6H4v-6Z" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+                Projets
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= EXPERIENCE ================= -->
+      <section id="experience">
+        <div class="sectionTitle">
+          <div>
+            <h2>Expériences</h2>
+            <p>Focus impact : sécurité, exploitation, support, et livrables concrets.</p>
+          </div>
+
+          <div class="pill" title="Soft skills (CV)">Communication • Autonomie • Leadership • Organisation</div>
+        </div>
+
+        <div class="grid2">
+          <!-- KABS -->
+          <article class="expCard reveal">
+            <div class="expHeader">
+              <div class="companyMark" id="logoKabs">
+                <img id="logoKabsImg" src="assets/logo-kabs.svg" alt="Logo Laboratoires Kabs INC" />
+                <!-- fallback icon -->
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 3.5 20 8v8l-8 4.5L4 16V8l8-4.5Z" stroke="currentColor" stroke-width="1.5" />
+                  <path d="M8.2 12.2h7.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+              </div>
+
+              <div>
+                <b>Technicien Informatique N1 — Laboratoires Kabs INC</b>
+                <div class="meta">Juin 2025 → Septembre 2025 • Stage • Montréal (Canada)</div>
+
+                <div class="tags">
+                  <span class="tag">Support & exploitation</span>
+                  <span class="tag">Cybersécurité (Fortinet)</span>
+                  <span class="tag">Scripting / Data</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="expBody">
+              <ul class="clean">
+                <li><b>Gestion bases de données</b> : Oracle (opérations et manipulation de données).</li>
+                <li><b>Automatisation / traitement</b> : scripts et outils de traitement de données (Excel VBA & Python).</li>
+                <li>
+                  <b>Cybersécurité</b> : protection & gestion des menaces (écosystème Fortinet, logique “prévention / détection / réponse”).
+                </li>
+              </ul>
+            </div>
+
+            <div class="expFooter">
+              <span class="chip">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 3l8 4v6c0 5-3.4 8.2-8 9-4.6-.8-8-4-8-9V7l8-4Z"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  />
+                </svg>
+                Sécurité opérationnelle
+              </span>
+
+              <span class="chip">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M5 7h14v10H5V7Z" stroke="currentColor" stroke-width="1.5" />
+                  <path
+                    d="M8 10h8M8 13h6"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                Reporting & rigueur
+              </span>
+            </div>
+          </article>
+
+          <!-- IPSSI INFRA -->
+          <article class="expCard reveal">
+            <div class="expHeader">
+              <div class="companyMark" id="logoIpssi">
+                <img id="logoIpssiImg" src="assets/logo-ipssi.svg" alt="Logo IPSSI" />
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M6 4h12v16H6V4Z" stroke="currentColor" stroke-width="1.5" />
+                  <path
+                    d="M8.5 7.5h7M8.5 11h7M8.5 14.5h5"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+
+              <div>
+                <b>Administrateur Systèmes & Réseaux — Projet étudiant (IPSSI)</b>
+                <div class="meta">Avril 2025 • Projet • Mise en place de services d’infrastructure</div>
+
+                <div class="tags">
+                  <span class="tag">AD DS</span>
+                  <span class="tag">DNS / DHCP</span>
+                  <span class="tag">Firewall</span>
+                  <span class="tag">Load Balancing</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="expBody">
+              <ul class="clean">
+                <li>Mise en place des services <b>AD DS</b>, <b>DNS</b>, <b>DHCP</b>.</li>
+                <li>Configuration du <b>pare-feu</b> et des <b>plages d’adressage IP</b>.</li>
+                <li>Implémentation d’un <b>load balancing</b> (objectif : disponibilité / répartition de charge).</li>
+              </ul>
+            </div>
+
+            <div class="expFooter">
+              <span class="chip">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M4 7h16M7 4v6M17 4v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                  <path
+                    d="M6 20h12a2 2 0 0 0 2-2v-6H4v6a2 2 0 0 0 2 2Z"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  />
+                </svg>
+                Infra Windows Server
+              </span>
+
+              <span class="chip">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M6 12h12M12 6v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                  <path
+                    d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  />
+                </svg>
+                Archi & adressage IP
+              </span>
+            </div>
+          </article>
+        </div>
+
+        <!-- Fullstack project -->
+        <article class="expCard reveal" style="margin-top: 14px">
+          <div class="expHeader">
+            <div class="companyMark">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4.5 7.5h15v9h-15v-9Z" stroke="currentColor" stroke-width="1.5" />
+                <path
+                  d="M8 10h8M8 12.8h6M8 15.6h4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+
+            <div>
+              <b>Développeur Fullstack — Projet étudiant (IPSSI)</b>
+              <div class="meta">Mars 2025 • Web app “Quiz” (création/gestion) • Stack simple et efficace</div>
+
+              <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">PHP 8</span>
+                <span class="tag">Bootstrap & Flexbox</span>
+                <span class="tag">UML</span>
+                <span class="tag">CSV (data)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="expBody">
+            <ul class="clean">
+              <li>Création d’un site fonctionnel : <b>création de quiz</b>, <b>gestion des utilisateurs</b>, workflow simple.</li>
+              <li>Focus structuration : <b>UML</b>, séparation logique front/back, UI Bootstrap.</li>
+              <li>Objectif : livrable robuste, facilement déployable/maintenable.</li>
+            </ul>
+          </div>
+
+          <div class="expFooter">
+            <span class="chip">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 7h10v10H7V7Z" stroke="currentColor" stroke-width="1.5" />
+                <path d="M9.5 9.5h5v5h-5v-5Z" stroke="currentColor" stroke-width="1.5" />
+              </svg>
+              Produit “from scratch”
+            </span>
+
+            <span class="chip">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M6 17 10 7l4 10 4-6"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Logique & qualité
+            </span>
+          </div>
+        </article>
+      </section>
+
+      <!-- ================= SKILLS ================= -->
+      <section id="skills">
+        <div class="sectionTitle">
+          <div>
+            <h2>Compétences</h2>
+            <p>Un mix “exploitation + sécurité + scripting”, aligné sur des besoins d’équipe SysAdmin / SecOps.</p>
+          </div>
+          <div class="pill">Stack principale : Windows Server • Réseaux • Fortinet</div>
+        </div>
+
+        <div class="skillWrap reveal">
+          <div class="skillCols">
+            <div class="skillGroup">
+              <h3>
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 3l8 4v6c0 5-3.4 8.2-8 9-4.6-.8-8-4-8-9V7l8-4Z"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  />
+                </svg>
+                Sécurité, réseaux & télécom
+              </h3>
+
+              <div class="skill"><span class="name">Windows Server 2019</span><span class="bar" style="--w: 82%"><i></i></span></div>
+              <div class="skill"><span class="name">Firewall (Fortinet)</span><span class="bar" style="--w: 76%"><i></i></span></div>
+              <div class="skill"><span class="name">VPN</span><span class="bar" style="--w: 70%"><i></i></span></div>
+              <div class="skill"><span class="name">VoIP</span><span class="bar" style="--w: 62%"><i></i></span></div>
+              <div class="skill"><span class="name">DHCP / DNS</span><span class="bar" style="--w: 78%"><i></i></span></div>
+              <div class="skill"><span class="name">Cisco (bases)</span><span class="bar" style="--w: 60%"><i></i></span></div>
+              <div class="skill"><span class="name">Active Directory</span><span class="bar" style="--w: 80%"><i></i></span></div>
+              <div class="skill"><span class="name">Kali Linux (outils)</span><span class="bar" style="--w: 58%"><i></i></span></div>
+            </div>
+
+            <div class="skillGroup">
+              <h3>
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M7 8h10v10H7V8Z" stroke="currentColor" stroke-width="1.5" />
+                  <path d="M9 6h6M9 18h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+                Dev, scripting & outils
+              </h3>
+
+              <div class="skill"><span class="name">PowerShell</span><span class="bar" style="--w: 72%"><i></i></span></div>
+              <div class="skill"><span class="name">Python</span><span class="bar" style="--w: 68%"><i></i></span></div>
+              <div class="skill"><span class="name">JavaScript / Node.js</span><span class="bar" style="--w: 60%"><i></i></span></div>
+              <div class="skill"><span class="name">React</span><span class="bar" style="--w: 55%"><i></i></span></div>
+              <div class="skill"><span class="name">Linux Ubuntu / Debian</span><span class="bar" style="--w: 66%"><i></i></span></div>
+              <div class="skill"><span class="name">Git / GitHub</span><span class="bar" style="--w: 64%"><i></i></span></div>
+              <div class="skill"><span class="name">PostgreSQL</span><span class="bar" style="--w: 52%"><i></i></span></div>
+              <div class="skill"><span class="name">Visual Studio / Teams</span><span class="bar" style="--w: 60%"><i></i></span></div>
+            </div>
+          </div>
+
+          <p class="note">
+            *Les jauges sont indicatives (portfolio). Si tu veux, je peux les calibrer “réalistes” selon ton niveau exact sur chaque techno.
+          </p>
+        </div>
+      </section>
+
+      <!-- ================= PROJECTS ================= -->
+      <section id="projects">
+        <div class="sectionTitle">
+          <div>
+            <h2>Projets sélectionnés</h2>
+            <p>Deux projets “vitrine” : un projet infra (AD/DNS/DHCP/firewall) et un projet fullstack (app Quiz).</p>
+          </div>
+          <div class="pill">Objectif : impact + clarté + livrable</div>
+        </div>
+
+        <div class="projectGrid">
+          <article class="projectCard reveal">
+            <div class="top">
+              <div class="projectIcon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 7h16v4H4V7Z" stroke="currentColor" stroke-width="1.5" />
+                  <path d="M4 13h16v4H4v-4Z" stroke="currentColor" stroke-width="1.5" />
+                  <path d="M8 9h.01M8 15h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                </svg>
+              </div>
+
+              <div>
+                <h3>Infrastructure Windows : AD DS + DNS + DHCP + Firewall</h3>
+                <p>Projet IPSSI : création d’une base d’infrastructure, adressage, services cœur et logique de sécurité.</p>
+              </div>
+            </div>
+
+            <div class="body">
+              <ul class="bullets">
+                <li>Déploiement d’<b>AD DS</b> (structure, comptes, bonnes pratiques de base).</li>
+                <li>Configuration <b>DNS</b> & <b>DHCP</b> (cohérence réseau, attribution, résolution).</li>
+                <li>Règles de <b>pare-feu</b> + segmentation logique (services nécessaires uniquement).</li>
+                <li><b>Load balancing</b> : disponibilité et répartition (objectif “production-like”).</li>
+              </ul>
+            </div>
+
+            <div class="bottom">
+              <div class="miniTags">
+                <span class="tag">Windows Server</span>
+                <span class="tag">AD</span>
+                <span class="tag">DNS/DHCP</span>
+                <span class="tag">Sécurité</span>
+              </div>
+
+              <a class="btn" href="#contact">
+                Discuter du projet
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M7 12h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                  <path
+                    d="m13 8 4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="projectCard reveal">
+            <div class="top">
+              <div class="projectIcon">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M7 7h10v10H7V7Z" stroke="currentColor" stroke-width="1.5" />
+                  <path
+                    d="M9.2 10.2h5.6M9.2 12.8h3.8"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+
+              <div>
+                <h3>Web App “Quiz” : création & gestion utilisateurs</h3>
+                <p>Projet IPSSI : application web simple, claire, maintenable. UI Bootstrap, logique back PHP 8.</p>
+              </div>
+            </div>
+
+            <div class="body">
+              <ul class="bullets">
+                <li>Front : <b>HTML + JavaScript</b>, mise en page <b>Bootstrap/Flexbox</b>.</li>
+                <li>Back : <b>PHP 8</b>, logique d’accès, création / listing / gestion.</li>
+                <li>Données : stockage type <b>CSV</b> (simple à déployer & comprendre).</li>
+                <li>Modélisation : <b>UML</b> pour structurer les entités et les flux.</li>
+              </ul>
+            </div>
+
+            <div class="bottom">
+              <div class="miniTags">
+                <span class="tag">PHP8</span>
+                <span class="tag">JS</span>
+                <span class="tag">Bootstrap</span>
+                <span class="tag">UML</span>
+              </div>
+
+              <a class="btn" href="#contact">
+                Voir une démo
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M7 12h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                  <path
+                    d="m13 8 4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <p class="note">
+          Tu veux un niveau encore au-dessus ? Je peux te rajouter une section “Études de cas” avec : contexte → objectif → contraintes → archi → étapes → résultats → next steps.
+        </p>
+      </section>
+
+      <!-- ================= TIMELINE ================= -->
+      <section id="timeline">
+        <div class="sectionTitle">
+          <div>
+            <h2>Parcours</h2>
+            <p>Formations + jalons. Lecture rapide pour un recruteur.</p>
+          </div>
+          <div class="pill">IPSSI • 2023 → 2026</div>
+        </div>
+
+        <div class="timeline reveal">
+          <div class="timeRow">
+            <div class="when">Déc. 2025 → Nov. 2026</div>
+            <div class="what">
+              <b>Bachelor 3 — Administration Systèmes & Réseaux (IPSSI)</b>
+              <small>Approfondissement SysAdmin, réseaux, sécurité, exploitation.</small>
+            </div>
+          </div>
+
+          <div class="timeRow">
+            <div class="when">Sept. 2023 → Juin 2025</div>
+            <div class="what">
+              <b>BTC — Prépa Bachelor Informatique & Développement (IPSSI)</b>
+              <small>Socle dev + systèmes : logique, outils, pratiques de projet.</small>
+            </div>
+          </div>
+
+          <div class="timeRow">
+            <div class="when">Mars → Avril 2025</div>
+            <div class="what">
+              <b>Projets IPSSI : Fullstack + Infrastructure</b>
+              <small>App Quiz (PHP/JS/Bootstrap) + Déploiement AD/DNS/DHCP/firewall, load balancing.</small>
+            </div>
+          </div>
+
+          <div class="timeRow">
+            <div class="when">Juin → Sept. 2025</div>
+            <div class="what">
+              <b>Stage — Laboratoires Kabs INC (Montréal)</b>
+              <small>Support N1, traitement de données (VBA/Python), Oracle, cybersécurité (Fortinet).</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= CONTACT ================= -->
+      <section id="contact">
+        <div class="sectionTitle">
+          <div>
+            <h2>Contact</h2>
+            <p>Tu peux m’écrire directement. Le formulaire génère un email (pas de backend nécessaire).</p>
+          </div>
+          <div class="pill">Réponse rapide • Communication claire</div>
+        </div>
+
+        <div class="contactGrid">
+          <div class="contactCard reveal">
+            <h3>Coordonnées</h3>
+
+            <div class="contactLine">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4.5 7.5h15v9h-15v-9Z" stroke="currentColor" stroke-width="1.5" />
+                <path
+                  d="m5 8 7 6 7-6"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <div class="txt"><b>Email</b><br />emrysagboton@gmail.com</div>
+            </div>
+
+            <div class="contactLine">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M7 3.8h3l1.2 4-1.6 1.5c1 2 2.6 3.6 4.6 4.6l1.5-1.6 4 1.2v3c0 1-.8 1.8-1.8 1.8C10 19.3 4.7 14 4.7 7.6c0-1 .8-1.8 1.8-1.8Z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <div class="txt"><b>Téléphone</b><br />06 09 86 17 06</div>
+            </div>
+
+            <div class="contactLine">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 21s7-4.4 7-11a7 7 0 1 0-14 0c0 6.6 7 11 7 11Z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M12 10.2a2.2 2.2 0 1 0 0-4.4 2.2 2.2 0 0 0 0 4.4Z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+              </svg>
+              <div class="txt"><b>Localisation</b><br />France — Neuilly-Plaisance (93360)</div>
+            </div>
+
+            <div class="contactLine">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M6.5 8.5V19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                <path d="M6.5 6.5h0" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" />
+                <path
+                  d="M10.2 19.5v-6.1c0-2.1 1.1-3.3 2.9-3.3 1.7 0 2.8 1.2 2.8 3.3v6.1"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                />
+                <path d="M17.6 11.6v7.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                <path
+                  d="M17.6 11.6c0-1.2.9-2.1 2.1-2.1 1.1 0 2 1 2 2.1v7.9"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                />
+              </svg>
+
+              <div class="txt">
+                <b>LinkedIn</b><br />
+                <a
+                  href="https://www.linkedin.com/in/julius-agboton-503612300"
+                  target="_blank"
+                  rel="noreferrer"
+                  style="color: rgba(255, 255, 255, 0.86); text-decoration: none"
+                >
+                  linkedin.com/in/julius-agboton-503612300
+                </a>
+              </div>
+            </div>
+
+            <p class="note">
+              Astuce : tu peux remplacer les logos par des fichiers dans
+              <span style="font-family: var(--mono)">assets/</span>. Si tu ne mets rien, un pictogramme SVG s’affiche automatiquement.
+            </p>
+          </div>
+
+          <div class="contactCard reveal">
+            <h3>Message rapide</h3>
+
+            <form class="form" id="contactForm">
+              <div class="field">
+                <label for="fName">Nom</label>
+                <input id="fName" name="name" type="text" placeholder="Ton nom / entreprise" autocomplete="name" />
+              </div>
+
+              <div class="field">
+                <label for="fEmail">Email</label>
+                <input
+                  id="fEmail"
+                  name="email"
+                  type="email"
+                  placeholder="email@entreprise.com"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+
+              <div class="field">
+                <label for="fSubject">Objet</label>
+                <input
+                  id="fSubject"
+                  name="subject"
+                  type="text"
+                  placeholder="Alternance SysAdmin / SecOps — prise de contact"
+                  required
+                />
+              </div>
+
+              <div class="field">
+                <label for="fMsg">Message</label>
+                <textarea
+                  id="fMsg"
+                  name="message"
+                  placeholder="Bonjour Emrys, nous souhaitons échanger à propos de..."
+                  required
+                ></textarea>
+              </div>
+
+              <button class="btn primary" type="submit">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M4.5 11.5 20 4.8 13.3 20.3l-1.7-6-7.1-2.8Z"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M20 4.8 11.6 14.3"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                Générer l’email
+              </button>
+
+              <p class="note">
+                Le formulaire n’envoie rien côté serveur : il ouvre simplement ton client mail (mailto).
+                Si tu veux une vraie réception web (backend), je peux te proposer une version “no-code” (Formspree) ou API.
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="foot">
+          <div>© <span id="year"></span> — Emrys AGBOTON • Admin Systèmes & Réseaux • SecOps</div>
+
+          <div style="display: flex; gap: 10px; flex-wrap: wrap">
+            <a class="pill" href="#top" style="text-decoration: none">↑ Retour en haut</a>
+            <a class="pill" href="mailto:emrysagboton@gmail.com" style="text-decoration: none">Email</a>
+            <a
+              class="pill"
+              href="https://www.linkedin.com/in/julius-agboton-503612300"
+              target="_blank"
+              rel="noreferrer"
+              style="text-decoration: none"
+              >LinkedIn</a
+            >
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      // ===============================
+      // Emrys Portfolio — One file JS
+      // - Reveal on scroll
+      // - Cursor glow
+      // - Smooth anchors
+      // - mailto form generator
+      // - Optional assets auto-fallback
+      // ===============================
+
+      // ---- year ----
+      const yearEl = document.getElementById("year");
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // ---- smooth anchors ----
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const id = a.getAttribute("href");
+          if (!id || id === "#") return;
+
+          const el = document.querySelector(id);
+          if (!el) return;
+
+          e.preventDefault();
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+          history.pushState(null, "", id);
+        });
+      });
+
+      // ---- reveal on scroll ----
+      const prefersReduced =
+        window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      const revealEls = Array.from(document.querySelectorAll(".reveal"));
+
+      if (prefersReduced) {
+        revealEls.forEach((el) => el.classList.add("on"));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("on");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "60px 0px -10px 0px" }
+        );
+
+        revealEls.forEach((el) => io.observe(el));
+      }
+
+      // ---- cursor glow follow ----
+      const glow = document.querySelector(".glow");
+
+      if (!prefersReduced && glow) {
+        const set = (x, y) => {
+          glow.style.setProperty("--x", x + "px");
+          glow.style.setProperty("--y", y + "px");
+        };
+
+        // init center
+        set(window.innerWidth * 0.45, window.innerHeight * 0.25);
+
+        window.addEventListener(
+          "pointermove",
+          (e) => {
+            set(e.clientX, e.clientY);
+          },
+          { passive: true }
+        );
+      }
+
+      // ---- optional assets (photo + logos) ----
+      function enableImage(imgEl, fallbackSelector) {
+        if (!imgEl) return;
+
+        imgEl.addEventListener("load", () => {
+          imgEl.style.display = "block";
+          const parent = imgEl.parentElement;
+          if (!parent) return;
+
+          const fallback = parent.querySelector(fallbackSelector);
+          if (fallback) fallback.style.display = "none";
+        });
+
+        imgEl.addEventListener("error", () => {
+          imgEl.style.display = "none";
+          const parent = imgEl.parentElement;
+          if (!parent) return;
+
+          const fallback = parent.querySelector(fallbackSelector);
+          if (fallback) fallback.style.display = "block";
+        });
+      }
+
+      enableImage(document.getElementById("avatarImg"), "svg.fallback");
+      enableImage(document.getElementById("logoKabsImg"), "svg");
+      enableImage(document.getElementById("logoIpssiImg"), "svg");
+
+      // ---- mailto form ----
+      const form = document.getElementById("contactForm");
+
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const name = document.getElementById("fName").value.trim();
+          const email = document.getElementById("fEmail").value.trim();
+          const subject = document.getElementById("fSubject").value.trim();
+          const msg = document.getElementById("fMsg").value.trim();
+
+          const intro = name ? `Bonjour, ici ${name}.` : "Bonjour,";
+          const reply = email ? `\n\nMon email : ${email}` : "";
+          const signature = "\n\n—\nEnvoyé via le portfolio d’Emrys AGBOTON";
+
+          const body = encodeURIComponent(`${intro}\n\n${msg}${reply}${signature}`);
+          const mailSubject = encodeURIComponent(subject || "Prise de contact — Alternance SysAdmin / SecOps");
+
+          window.location.href = `mailto:emrysagboton@gmail.com?subject=${mailSubject}&body=${body}`;
+        });
+      }
+    </script>
+  </body>
 </html>
