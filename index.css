@@ -1023,3 +1023,76 @@
           text-decoration: none;
         }
       }
+@media (max-width: 720px) {
+  .nav{
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 0;
+  }
+
+  /* Brand plus compacte */
+  .brand{
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .logo{
+    width: 34px;
+    height: 34px;
+    border-radius: 12px;
+  }
+
+  .brand b{
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 52vw;
+    display: block;
+  }
+
+  .brand small{
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 52vw;
+  }
+
+  /* CTA compact */
+  .cta{
+    gap: 8px;
+    margin-left: auto;
+  }
+
+  .btn{
+    padding: 9px 10px;
+    border-radius: 13px;
+  }
+
+  .btn svg{
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Navigation : version horizontale scrollable (pro) */
+  .navlinks{
+    width: 100%;
+    order: 3;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 8px;
+    padding-bottom: 2px;
+  }
+
+  .navlinks a{
+    white-space: nowrap;
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  /* Hide scrollbar (optionnel) */
+  .navlinks::-webkit-scrollbar{ height: 0; }
+}
